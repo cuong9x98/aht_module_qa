@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var AHT\QA\Block\Product\View\ListView $block */
+
+$_items = $block->getQuestions();
+$format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
+?>
+<?php if (count($_items)) : ?>
+    <div class="block question-list" id="customer-questions">
+        <?php if (!$block->getHideTitle()) : ?>
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__('Customer questions')) ?></strong>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <ol class="items question-items">
+                <?php foreach ($_items as $_question) : ?>
+                    <li class="item question-item" itemscope itemprop="question" itemtype="http://schema.org/question">
+                        <div class="question-details">
+                            <p class="question-author">
+                                <span class="question-details-label"><?= $block->escapeHtml(__('question by')) ?></span>
+                                <strong class="question-details-value" itemprop="author"><?= $block->escapeHtml($_question->getName()) ?></strong>
+                            </p>
+                            <p class="question-date">
+                                <span class="question-details-label"><?= $block->escapeHtml(__('Posted on')) ?></span>
+                                <time class="question-details-value" itemprop="datePublished" datetime="<?= $block->escapeHtmlAttr($block->formatDate($_question->getCreatedAt(), $format)) ?>"><?= $block->escapeHtml($block->formatDate($_question->getCreatedAt(), $format)) ?></time>
+                            </p>
+                        </div>
+                        <div class="question-title" itemprop="name"><?= $block->escapeHtml('Q. ' . $_question->getQuestion()) ?></div>
+                        <div class="question-content" itemprop="description">
+                            <?= /* @noEscape */ nl2br($block->escapeHtml('A. ' . $_question->getAnswer())) ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+            <?php if ($_items->getSize() > 10) : ?>
+                <div class="toolbar question-toolbar">
+                    <?= $block->getChildHtml('toolbar') ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Framework\View\Element\Template" name="qa.tab" as="qa.tab" template="AHT_QA::product/view/question.phtml" group="detailed_info"  ifconfig="question_pending/question/is_enabled">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Q and A</argument>
+                    <argument name="sort_order" xsi:type="string">20</argument>
+                </arguments>
+                <block class="AHT\QA\Block\Product\View\ListView" name="qa.list" as="qa.list" template="AHT_QA::product/view/list.phtml" />
+                <block class="Magento\Theme\Block\Html\Pager" name="product_question_list.toolbar"/>
+                <block class="AHT\QA\Block\Product\View\Form" name="qa.form" as="qa.form" template="AHT_QA::product/view/form.phtml" />
+            </block>
+
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+        id="AHT_QA::question_pending"
+        title="Pending Questions"
+        translate="title"
+        module="AHT_QA"
+        parent="Magento_Backend::marketing_user_content"
+        sortOrder="20"
+        dependsOnConfig="question_pending/question/is_enabled"
+        action="qaa/question/index"
+        resource="AHT_QA::question_pending"/>
+    </menu>
+</config>

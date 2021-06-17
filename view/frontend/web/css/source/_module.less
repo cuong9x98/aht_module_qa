@@ -1,0 +1,35 @@
+& when(@media-common=true) {
+    .question-list {
+        .block-title {
+            strong {
+                font-size: 30px;
+                font-weight: 500;
+            }
+            margin-bottom: 50px;
+        }
+        .block-content {
+            .question-items {
+                .question-item {
+                    padding: 10px;
+                    border: 0.1px solid black;
+                    .question-details {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                        border-bottom: 0.5px solid #ccc;
+                        strong {
+                            font-weight: 900;
+                        }
+                    }
+                    .question-title {
+                        font-size: 22px;
+                        margin: 10px 0;
+                    }
+                    .question-content {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
